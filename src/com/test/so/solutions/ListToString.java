@@ -12,9 +12,7 @@ public class ListToString {
 		list.add("three");
 
 		System.out.println(String.join(",", list));
-		
 		System.out.println(list.stream().collect(Collectors.joining(",")));
-		
 		System.out.println(getStringPriorJava8(list));
 	}
 

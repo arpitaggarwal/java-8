@@ -20,7 +20,8 @@ public class ListSort {
 		list.add(new ListSort(3, "adf"));
 		list.add(new ListSort(6, "aad"));
 		list.add(new ListSort(2, "xx"));
-		list.sort((s1, s2) -> s1.a - s2.a);
+		
+	    list.sort((s1, s2) -> s1.a - s2.a);
 
 		for (ListSort element : list) {
 			System.out.println(element.a + element.b);

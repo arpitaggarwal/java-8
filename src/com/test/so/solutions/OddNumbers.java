@@ -9,7 +9,7 @@ public class OddNumbers {
 	public static void main(String[] args) {
 		System.out.print("Enter Number : ");
 		int n = scanner.nextInt();
-		IntStream.range(0, n).filter(element -> element % 2 != 0).boxed()
+		IntStream.range(0, n).filter(element -> element % 2 != 0)
 				.forEach(System.out::println);
 	}
 }
