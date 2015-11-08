@@ -21,6 +21,11 @@ public class ListCompare {
 			if (list1.get(i).equals(list2.get(i)))
 				System.out.println(i);
 		});
-	}
 
+		int nMatches = IntStream.range(0, list1.size())
+				.filter(idx -> !list1.get(idx).equals(list2.get(idx)))
+				.findFirst().orElse(list1.size());
+		System.out.println(nMatches);
+
+	}
 }
