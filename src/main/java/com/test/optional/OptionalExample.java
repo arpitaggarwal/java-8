@@ -16,9 +16,8 @@ public class OptionalExample {
 		System.out.println(optional.get() + " Or Else :: "
 				+ optional.orElse("hello-world"));
 
-		optional.ifPresent( System.out::println );
+		optional.ifPresent(System.out::println);
 
-		
 		Optional<String> optionalOfNullable = Optional.ofNullable(null);
 		System.out.println(optionalOfNullable.isPresent());
 

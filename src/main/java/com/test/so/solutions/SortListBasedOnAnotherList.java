@@ -7,32 +7,27 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Main {
+public class SortListBasedOnAnotherList {
 
 	public static void main(String[] args) {
 
 		List<DatabaseObject> databaseObjectList = getDatabaseObjectList();
-		System.out.println(databaseObjectList);
 
 		Comparator<DatabaseObject> cmp = Comparator.comparing(
 				DatabaseObject::getOrder).thenComparing(
 				DatabaseObject::getSuborder);
 		Collections.sort(databaseObjectList, cmp);
 		
-		System.out.println("Sorted List ");
-		System.out.println(databaseObjectList);
-		
-		
 		List<ServiceObject> serviceObjectList = getServiceObjectList();
 		
-		System.out.println("Service List ");
-		System.out.println(serviceObjectList);
+		System.out.println(sort(serviceObjectList, databaseObjectList));
 		
 		System.out.println("Final List \n" + getSortedList(serviceObjectList, databaseObjectList));
 	}
 
-	public static void sort(final List<ServiceObject> serviceObjectList, final List<DatabaseObject> databaseObjectList) {
-        final Map<String, List<ServiceObject>> map = databaseObjectList.stream().collect(Collectors.toMap(i->i.getName(), i-> new ArrayList<>()));
+	public static List<ServiceObject> sort(final List<ServiceObject> serviceObjectList, final List<DatabaseObject> databaseObjectList) {
+        
+		final Map<String, List<ServiceObject>> map = databaseObjectList.stream().collect(Collectors.toMap(i->i.getName(), i-> new ArrayList<>()));
         
 	    /* for (ServiceObject serviceObject : serviceObjectList) {
         List<ServiceObject> value = map.get(serviceObject.getValue());
@@ -45,24 +40,23 @@ public class Main {
 	    	 if (value != null){
 	    		 value.add(e);
 	    	 }
-		        	
 	    	return e;
-	    	
 	    }).collect(Collectors.toList());
         
-	   /* 
+        serviceObjectList.clear();
+        
 	    for (DatabaseObject string : databaseObjectList)
-	        for (ServiceObject video : map.get(string.getName()))
-	            list.add(video);
+	        for (ServiceObject obj : map.get(string.getName()))
+	        	serviceObjectList.add(obj);
 	    
-	    System.out.println(list);*/
+	    return serviceObjectList;
 	    
-	    List<ServiceObject> list = databaseObjectList.stream()
+	   /* List<ServiceObject> list = databaseObjectList.stream()
                 .flatMap(p -> map.get(p.getName()).stream())
                 .map(e-> e)
                 .collect(Collectors.toList());
 	    
-	    System.out.println(list);
+	    System.out.println(list);*/
 	}
 	
 	public static List<ServiceObject> getSortedList(final List<ServiceObject> serviceObjectList, final List<DatabaseObject> databaseObjectList) {
@@ -75,9 +69,9 @@ public class Main {
 	private static List<DatabaseObject> getDatabaseObjectList() {
 		final List<DatabaseObject> databaseObjectList = new ArrayList<>();
 		DatabaseObject obj1 = new DatabaseObject();
-		obj1.setName("ABDF");
-		obj1.setOrder(1);
-		obj1.setSuborder(1);
+		obj1.setName("GBDF");
+		obj1.setOrder(2);
+		obj1.setSuborder(4);
 
 		DatabaseObject obj2 = new DatabaseObject();
 		obj2.setName("AVHL");
@@ -111,7 +105,7 @@ public class Main {
 		final List<ServiceObject> serviceObjectList = new ArrayList<>();
 		ServiceObject obj1 = new ServiceObject();
 		obj1.setKey("1");
-		obj1.setValue("ABDF");
+		obj1.setValue("GBDF");
 		
 		ServiceObject obj2 = new ServiceObject();
 		obj2.setKey("1");
@@ -127,49 +121,6 @@ public class Main {
 
 		return serviceObjectList;
 	}
-	
-	private static List<ServiceObject> getServiceObjectList1() {
-		final List<ServiceObject> serviceObjectList = new ArrayList<>();
-		ServiceObject obj1 = new ServiceObject();
-		obj1.setKey("1");
-		obj1.setValue("AVHL");
-		
-		ServiceObject obj2 = new ServiceObject();
-		obj2.setKey("1");
-		obj2.setValue("QOPI");
-
-		ServiceObject obj3 = new ServiceObject();
-		obj3.setKey("1");
-		obj3.setValue("AAKL");
-
-		serviceObjectList.add(obj1);
-		serviceObjectList.add(obj2);
-		serviceObjectList.add(obj3);
-
-		return serviceObjectList;
-	}
-	
-	private static List<ServiceObject> getServiceObjectList2() {
-		final List<ServiceObject> serviceObjectList = new ArrayList<>();
-		ServiceObject obj1 = new ServiceObject();
-		obj1.setKey("1");
-		obj1.setValue("KGHV");
-		
-		ServiceObject obj2 = new ServiceObject();
-		obj2.setKey("1");
-		obj2.setValue("ABDF");
-
-		ServiceObject obj3 = new ServiceObject();
-		obj3.setKey("1");
-		obj3.setValue("QOPI");
-
-		serviceObjectList.add(obj1);
-		serviceObjectList.add(obj2);
-		serviceObjectList.add(obj3);
-
-		return serviceObjectList;
-	}
-
 
 }
 
