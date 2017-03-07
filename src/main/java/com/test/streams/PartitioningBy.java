@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class GroupingBy {
+public class PartitioningBy {
 
 	public static void main(String[] args) {
-		Map<String, List<Student>> groupByTeachers = getStudentList().stream()
-				.collect(Collectors.groupingBy(Student::getTeacher));
-		System.out.println(groupByTeachers);
+		Map<Boolean, List<Student>> partitioningByLevel = getStudentList().stream()
+				.collect(Collectors.partitioningBy(e -> e.getLevel()>101));
+		System.out.println(partitioningByLevel);
 	}
 
 	private static List<Student> getStudentList() {
@@ -24,4 +24,3 @@ public class GroupingBy {
 		return studentList;
 	}
 }
-
