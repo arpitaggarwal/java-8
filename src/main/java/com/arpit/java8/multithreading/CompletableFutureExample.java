@@ -1,4 +1,4 @@
-package com.test.multithreading;
+package com.arpit.java8.multithreading;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;

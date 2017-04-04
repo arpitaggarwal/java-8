@@ -1,4 +1,4 @@
-package com.test.functions;
+package com.arpit.java8.function;
 
 import java.util.function.Function;
 

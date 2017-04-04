@@ -1,4 +1,4 @@
-package com.test.function;
+package com.arpit.java8.function;
 
 import java.io.IOException;
 import java.util.Objects;

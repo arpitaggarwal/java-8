@@ -2,7 +2,7 @@ package com.test.controller;
 
 import java.io.IOException;
 
-import com.test.function.CheckedFunction;
+import com.arpit.java8.function.CheckedFunction;
 import com.test.service.TestService;
 
 public class TestController {
