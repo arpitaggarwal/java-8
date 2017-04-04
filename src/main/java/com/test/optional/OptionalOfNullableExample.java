@@ -8,15 +8,18 @@ public class OptionalOfNullableExample {
 
 		A objA = new A(1, "Arpit");
 		Optional<A> optional = Optional.ofNullable(objA);
-		System.out.println(optional.map(e -> new B(e.getId(), e.getName())).get());
+		System.out.println(optional.map(e -> new B(e.getId(), e.getName()))
+				.orElse(new B())); // Output : B [id=1, name=Arpit]
 
 		Optional<A> optionalOfNull = Optional.ofNullable(null);
 
-		System.out.println(optionalOfNull.map(e -> new B(e.getId(), e.getName())));
+		System.out.println(optionalOfNull.map(
+				e -> new B(e.getId(), e.getName())).orElse(new B())); // Output : B [id=0, name=null]
 	}
 }
 
 class A {
+	
 	private int id;
 	private String name;
 
@@ -48,8 +51,13 @@ class A {
 }
 
 class B {
+	
 	private int id;
 	private String name;
+
+	public B() {
+
+	}
 
 	public B(int id, String name) {
 		this.id = id;
